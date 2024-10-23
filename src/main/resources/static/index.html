@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <script src="/js/app.js" defer></script>
+
+    <style>
+        .datepicker {
+            margin-top: 10px;
+        }
+
+        .ui-datepicker-calendar td {
+            padding: 3px;
+        }
+
+        .ui-datepicker-calendar .ui-state-active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <div class="header-content">
+            <div class="search-bar">
+                <input type="text" id="search-tasks" placeholder="Поиск задач">
+                <button id="search-button">Поиск</button>
+            </div>
+        </div>
+
+        <div class="filter-container" style="background-color: #007bff; color: white; padding: 10px; border-radius: 5px;">
+            <button id="show-completed" class="filter-button">Выполненные</button>
+            <button id="show-incomplete" class="filter-button">Невыполненные</button>
+            <button id="sort-asc" class="filter-button">Сортировать по дате ↑</button>
+            <button id="sort-desc" class="filter-button">Сортировать по дате ↓</button>
+        </div>
+    </header>
+
+    <div class="main-content">
+
+        <div class="control-panel">
+            <div class="controls">
+                <button id="add-task" class="control-button">Добавить задачу</button>
+                <button id="all-tasks" class="control-button">Все задачи</button>
+                <button id="week-tasks" class="control-button">За неделю</button>
+                <button id="today-tasks" class="control-button">Сегодня</button>
+                <div id="datepicker" class="datepicker"></div>
+            </div>
+        </div>
+
+        <div class="task-container">
+            <h2 id="task-header">Все задачи</h2>
+            <ul id="task-list" class="task-list"></ul>
+        </div>
+    </div>
+
+    <div id="task-modal" class="modal large-modal">
+        <button class="close-modal" onclick="closeTaskModal()">✖</button>
+
+        <input type="text" id="task-title" value="Название" onfocus="if (this.value === 'Название') this.value=''" onblur="if (this.value === '') this.value='Название'" />
+
+        <div class="input-divider"></div>
+
+        <textarea id="task-description" onfocus="if (this.value === 'Описание') this.value=''" onblur="if (this.value === '') this.value='Описание'">Описание</textarea>
+
+        <label id="task-status-container" class="custom-checkbox">
+            <input type="checkbox" id="task-status" />
+            <span class="checkmark"></span>
+        </label>
+
+        <div id="task-created-time" style="display: none;">
+            <span id="created-time"></span>
+        </div>
+
+        <button id="save-task">Готово</button>
+    </div>
+</div>
+</body>
+</html>
